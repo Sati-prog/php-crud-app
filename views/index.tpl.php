@@ -4,6 +4,25 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>PHP CRUD with AJAX, MySQL and Bootstrap</title>
+
+        <link rel="apple-touch-icon" sizes="57x57" href="assets/favicons/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="assets/favicons/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="assets/favicons/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="assets/favicons/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="assets/favicons/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="assets/favicons/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="assets/favicons/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="assets/favicons/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192"  href="assets/favicons/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="assets/favicons/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+        <link rel="manifest" href="assets/favicons/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="assets/favicons/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     </head>
     <body>
@@ -24,44 +43,7 @@
                 </div>
 
                 <div class="table-responsive my-3">
-                    <?php if(!empty($cities)): ?>
-                        <?= $pagination ?>
-                            <table class="table table-hover">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Population</th>
-                                        <th scope="col">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($cities as $city): ?>
-                                        <tr id="city-<?= $city["id"] ?>">
-                                            <th scope="row"><?= $city["id"] ?></th>
-                                            <td><?= $city["name"] ?></td>
-                                            <td><?= $city["population"] ?></td>
-                                            <td>
-                                                <button 
-                                                    class="btn btn-info btn-edit"
-                                                    data-id="<?= $city["id"] ?>"
-                                                    data-bs-toggle="modal" 
-                                                    data-bs-target="#editCity"
-                                                >Edit</button>
-
-                                                <button 
-                                                    class="btn btn-danger btn-delete"
-                                                    data-id="<?= $city["id"] ?>"
-                                                >Delete</button>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        <?= $pagination ?>
-                    <?php else: ?>
-                        <p>Cities not found...</p>
-                    <?php endif; ?>
+                    <?php require_once 'views/index-content.tpl.php' ?>
                 </div>
             </div>
         </div>
@@ -142,5 +124,6 @@
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/main.js"></script>
     </body>
 </html>
