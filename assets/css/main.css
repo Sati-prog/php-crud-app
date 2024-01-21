@@ -1,0 +1,44 @@
+.btn-add {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.btn-edit, .btn-delete {
+    width: 100px;
+}
+
+th, td {
+    text-align: center;
+}
+
+#loader {
+    background: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    position: absolute;
+    top: 150px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: none;
+}
+
+#loader img {
+    width: 100px;
+}
+
+#clear-search {
+    cursor: pointer;
+}
+
+mark {
+    background: yellow;
+    color: black;
+}
+
+@media only screen and (max-width: 767px) {
+
+    .btn-add, .btn-edit {
+        margin-bottom: 10px;
+    }
+}

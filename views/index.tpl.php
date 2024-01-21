@@ -24,30 +24,7 @@
         <meta name="theme-color" content="#ffffff">
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-        <style>
-            #loader {
-                background: rgba(255, 255, 255, 0.7);
-                text-align: center;
-                position: absolute;
-                top: 150px;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 2;
-                display: none;
-            }
-            #loader img {
-                width: 100px;
-            }
-            #clear-search {
-                cursor: pointer;
-            }
-
-            mark{
-                background: yellow;
-                color: black;
-            }
-        </style>
+        <link rel="stylesheet" href="assets/css/main.css">
     </head>
     <body>
         <div class="container">
@@ -60,7 +37,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-6">
                             <button 
                                 class="btn btn-primary btn-add"
                                 data-bs-toggle="modal" 
@@ -68,7 +45,7 @@
                             >Add city</button>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-6">
                             <div class="input-group mb-3">
                                 <input 
                                     type="text" 
@@ -77,7 +54,7 @@
                                     placeholder="Search..."
                                 >
                                 <span 
-                                    class="input-group-text" 
+                                    class="input-group-text bg-danger text-white" 
                                     id="clear-search"
                                 >&times;</span>
                             </div>
