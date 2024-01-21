@@ -16,3 +16,9 @@ function get_cities(int $start, int $per_page): array
     global $db;
     return $db->query("SELECT * FROM city LIMIT $start, $per_page")->findAll();
 }
+
+function search_cities(string $search): array
+{
+    global $db;
+    return $db->query("SELECT * FROM city WHERE name LIKE ?", ["%{$search}%"])->findAll();
+}

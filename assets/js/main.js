@@ -1,6 +1,7 @@
 const divTable = document.querySelector('.table-responsive');
 
 // Delegate events
+
 divTable.addEventListener('click', (e) => {
 
     // Pagination
@@ -19,7 +20,7 @@ divTable.addEventListener('click', (e) => {
             .then((response) => response.text())
             .then((data) => {
 
-                document.querySelector('.table-responsive').innerHTML = data;
+                divTable.innerHTML = data;
             });
         }
     }
@@ -88,8 +89,8 @@ divTable.addEventListener('click', (e) => {
 
 // Add city
 
-addCityForm = document.getElementById('addCityForm');
-btnAddSubmit = document.getElementById('btn-add-submit');
+const addCityForm = document.getElementById('addCityForm'),
+      btnAddSubmit = document.getElementById('btn-add-submit');
 
 addCityForm.addEventListener('submit', (e) => {
 
@@ -128,8 +129,8 @@ addCityForm.addEventListener('submit', (e) => {
 
 // Edit city
 
-editCityForm = document.getElementById('editCityForm');
-btnEditSubmit = document.getElementById('btn-edit-submit');
+const editCityForm = document.getElementById('editCityForm'),
+      btnEditSubmit = document.getElementById('btn-edit-submit');
 
 editCityForm.addEventListener('submit', (e) => {
 
@@ -169,5 +170,52 @@ editCityForm.addEventListener('submit', (e) => {
             btnEditSubmit.disabled = false;
 
         }, 1000);
+    });
+});
+
+// Search
+
+const searchField = document.getElementById('search'),
+      loader = document.getElementById('loader');
+
+searchField.addEventListener('input', (e) => {
+
+    let search = e.target.value.trim();
+    if (search.length > 2) {
+
+        fetch('actions.php', {
+
+            method: 'POST',
+            body: JSON.stringify({search: search})
+        })
+        .then((response) => response.text())
+        .then((data) => {
+
+            loader.style.display = 'block';
+            setTimeout(() =>{
+
+                divTable.innerHTML = data;
+                // https://www.cssscript.com/easy-javascript-plugin-word-highlighting-document-mark-js/
+                let instance = new Mark(divTable);
+                instance.mark(search);
+                loader.style.display = 'none';
+            }, 500);
+        });
+    }
+});
+
+document.getElementById('clear-search').addEventListener('click', () => {
+
+    searchField.value = '';
+
+    fetch('actions.php', {
+
+        method: 'POST',
+        body: JSON.stringify({page: 1}),
+    })
+    .then((response) => response.text())
+    .then((data) => {
+
+        divTable.innerHTML = data;
     });
 });
